@@ -68,3 +68,145 @@ code {
   outline: none !important;
   box-shadow: none !important;
 } 
+
+.form-check-input[type=radio] {
+  background-color: #EFEEEB;
+  border-radius: 0%;
+
+  border-radius: 5px !important;
+  height: 20px;
+  width: 20px;
+  border: none;
+}
+
+.form-check-input:checked[type=radio] {
+  background-color: #EFEEEB;
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+  background-image: url("./assets/icon-tick.svg") !important;
+  border: none;
+  padding: 5px 5px 2px 2px !important; 
+}
+
+#radio-button-row {
+  height: 100%;
+}
+
+.radio-signup-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  /* align-items: center; */
+  min-height: 100%;
+}
+
+#signup-button {
+  background-color: #6CAFB2;
+  border: none;
+}
+
+/* Right col */
+
+#mix-and-match {
+  display: none;
+}
+
+#mix-and-match-mobile {
+  display: none;
+}
+
+#replay-desktop {
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+.bee-desktop-col {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+#bee-desktop {
+  display: none;
+}
+
+#bee-mobile {
+  display: none;
+}
+
+#hero-text-large-screen {
+  display: none;
+}
+
+#hero-text-mobile {
+  display: none;
+}
+
+#sub-hero-text {
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 500;
+}
+
+/* Med to large screens only styles */
+@media (min-width: 991px) {
+  /* Hero text */
+  #hero-text-large-screen {
+    display: block;
+    font-size: 40px;
+    line-height: 35px;
+    font-weight: 500;
+  }
+
+  #mix-and-match {
+    display: block;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 25px;
+  }
+
+  /* Bee */
+
+  #bee-desktop {
+    display: block;
+  }
+}
+/* Mobile styles */
+
+@media (max-width: 767px) {
+
+  /* Hero text */
+  #hero-text-mobile {
+    display: block;
+    font-size: 30px;
+    line-height: 35px;
+    font-weight: 500;
+  }
+
+  #mix-and-match-mobile {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 20px;
+    line-height: 15px;
+  }
+
+  /* Bee */
+  #bee-mobile {
+    width: 60px;
+  }
+
+  /* Cards */
+  .card-back {
+    width: 70px;
+  }
+
+  #card-row {
+    padding-top: 15px !important;
+  }
+  
+
+
+}
+
+
+
