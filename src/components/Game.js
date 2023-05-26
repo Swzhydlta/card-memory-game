@@ -25,110 +25,104 @@ import Card1Turned from "../assets/card-1-turned.svg";
 import Card2Turned from "../assets/card-2-turned.svg";
 import Card3Turned from "../assets/card-3-turned.svg";
 import Card4Turned from "../assets/card-4-turned.svg";
-import Card5Turned from "../assets/card-5-turned.svg";
 import Card6Turned from "../assets/card-6-turned.svg";
-import Card7Turned from "../assets/card-7-turned.svg";
-import Card8Turned from "../assets/card-8-turned.svg";
-import Card9Turned from "../assets/card-9-turned.svg";
-import Card10Turned from "../assets/card-10-complete.svg";
 import Bee from "../assets/img-bee.svg";
 
 function Game() {
-  // console.log("assets", assets);
   const storedState = localStorage.getItem("gameState");
   const parseStoredState = storedState ? JSON.parse(storedState) : null;
-  const [cards, setCards] = useState([
-    {
-      name: "card1",
-      id: 1,
-      icon: Card1Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 1,
-    },
-    {
-      name: "card2",
-      id: 2,
-      icon: Card1Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 1,
-    },
-    {
-      name: "card3",
-      id: 3,
-      icon: Card2Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 2,
-    },
-    {
-      name: "card4",
-      id: 4,
-      icon: Card2Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 2,
-    },
-    {
-      name: "card5",
-      id: 5,
-      icon: Card3Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 3,
-    },
-    {
-      name: "card6",
-      id: 6,
-      icon: Card3Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 3,
-    },
-    {
-      name: "card7",
-      id: 7,
-      icon: Card4Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 4,
-    },
-    {
-      name: "card8",
-      id: 8,
-      icon: Card4Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 4,
-    },
-    {
-      name: "card9",
-      id: 9,
-      icon: Card6Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 5,
-    },
-    {
-      name: "card10",
-      id: 10,
-      icon: Card6Turned,
-      visible: false,
-      solved: false,
-      beingSolved: false,
-      iconId: 5,
-    },
-  ]);
+  // const [cards, setCards] = useState([
+  //   {
+  //     name: "card1",
+  //     id: 1,
+  //     icon: Card1Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 1,
+  //   },
+  //   {
+  //     name: "card2",
+  //     id: 2,
+  //     icon: Card1Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 1,
+  //   },
+  //   {
+  //     name: "card3",
+  //     id: 3,
+  //     icon: Card2Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 2,
+  //   },
+  //   {
+  //     name: "card4",
+  //     id: 4,
+  //     icon: Card2Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 2,
+  //   },
+  //   {
+  //     name: "card5",
+  //     id: 5,
+  //     icon: Card3Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 3,
+  //   },
+  //   {
+  //     name: "card6",
+  //     id: 6,
+  //     icon: Card3Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 3,
+  //   },
+  //   {
+  //     name: "card7",
+  //     id: 7,
+  //     icon: Card4Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 4,
+  //   },
+  //   {
+  //     name: "card8",
+  //     id: 8,
+  //     icon: Card4Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 4,
+  //   },
+  //   {
+  //     name: "card9",
+  //     id: 9,
+  //     icon: Card6Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 5,
+  //   },
+  //   {
+  //     name: "card10",
+  //     id: 10,
+  //     icon: Card6Turned,
+  //     visible: false,
+  //     solved: false,
+  //     beingSolved: false,
+  //     iconId: 5,
+  //   },
+  // ]);
 
   const [asset, setAsset] = useState([
     { name: "card1", background: Card1Background, complete: Card1Complete },
@@ -142,103 +136,126 @@ function Game() {
     { name: "card9", background: Card9Background, complete: Card9Complete },
     { name: "card10", background: Card10Background, complete: Card10Complete },
   ]);
+  const [cards, setCards] = useState(
+    parseStoredState?.cards
+      ? parseStoredState?.cards
+      : [
+          {
+            name: "card1",
+            id: 1,
+            icon: Card1Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 1,
+          },
+          {
+            name: "card2",
+            id: 2,
+            icon: Card1Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 1,
+          },
+          {
+            name: "card3",
+            id: 3,
+            icon: Card2Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 2,
+          },
+          {
+            name: "card4",
+            id: 4,
+            icon: Card2Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 2,
+          },
+          {
+            name: "card5",
+            id: 5,
+            icon: Card3Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 3,
+          },
+          {
+            name: "card6",
+            id: 6,
+            icon: Card3Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 3,
+          },
+          {
+            name: "card7",
+            id: 7,
+            icon: Card4Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 4,
+          },
+          {
+            name: "card8",
+            id: 8,
+            icon: Card4Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 4,
+          },
+          {
+            name: "card9",
+            id: 9,
+            icon: Card6Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 5,
+          },
+          {
+            name: "card10",
+            id: 10,
+            icon: Card6Turned,
+            visible: false,
+            solved: false,
+            beingSolved: false,
+            iconId: 5,
+          },
+        ]
+  );
 
-  // const [cards, setCards] = useState(
-  //   parseStoredState?.cards
-  //     ? parseStoredState?.cards
-  //     : [
-  //         {
-  //           name: "card1",
-  //           id: 1,
-  //           icon: 1,
-  //           visible: false,
-  //           solved: false,
-  //           beingSolved: false,
-  //         },
-  //         {
-  //           name: "card2",
-  //           id: 2,
-  //           icon: 2,
-  //           visible: false,
-  //           solved: false,
-  //           beingSolved: false,
-  //         },
-  //         {
-  //           name: "card3",
-  //           id: 3,
-  //           icon: 1,
-  //           visible: false,
-  //           solved: false,
-  //           beingSolved: false,
-  //         },
-  //         {
-  //           name: "card4",
-  //           id: 4,
-  //           icon: 2,
-  //           visible: false,
-  //           solved: false,
-  //           beingSolved: false,
-  //         },
-  //       ]
-  // );
-  // const [shuffle, setShuffle] = useState(false);
-  // const [game, setGame] = useState(
-  //   parseStoredState?.game ? parseStoredState.game : false
-  // );
-  // const [flippedCards, setFlippedCards] = useState(
-  //   parseStoredState?.flippedCards ? parseStoredState.flippedCards : 0
-  // );
-  // const [tries, setTries] = useState(
-  //   parseStoredState?.tries ? parseStoredState.tries : 2
-  // );
-  // const [wonOrLost, setWonOrLost] = useState(
-  //   parseStoredState?.wonOrLost ? parseStoredState.wonOrLost : ""
-  // );
-  // const [playButtonText, setPlayButtonText] = useState(
-  //   parseStoredState?.playButtonText ? parseStoredState.playButtonText : "Play"
-  // );
+  const [game, setGame] = useState(
+    parseStoredState?.game ? parseStoredState.game : true
+  );
+  const [flippedCards, setFlippedCards] = useState(
+    parseStoredState?.flippedCards ? parseStoredState.flippedCards : 0
+  );
+  const [tries, setTries] = useState(
+    parseStoredState?.tries >= 0 ? parseStoredState.tries : 10
+  );
+  const [wonOrLost, setWonOrLost] = useState(
+    parseStoredState?.wonOrLost ? parseStoredState.wonOrLost : ""
+  );
+  const [startAgain, setStartAgain] = useState(
+    parseStoredState?.startAgain ? parseStoredState.startAgain : false
+  );
+  const [roundsPlayed, setRoundsPlayed] = useState(
+    parseStoredState?.roundsPlayed ? parseStoredState.roundsPlayed : 0
+  );
+  const [hasLocalStorage, setHasLocalStorage] = useState(
+    parseStoredState?.localStorage ? parseStoredState.localStorage : false
+  );
 
-  // const [cards, setCards] = useState([
-  //   {
-  //     name: "card1",
-  //     id: 1,
-  //     icon: 1,
-  //     visible: false,
-  //     solved: false,
-  //     beingSolved: false,
-  //   },
-  //   {
-  //     name: "card2",
-  //     id: 2,
-  //     icon: 2,
-  //     visible: false,
-  //     solved: false,
-  //     beingSolved: false,
-  //   },
-  //   {
-  //     name: "card3",
-  //     id: 3,
-  //     icon: 1,
-  //     visible: false,
-  //     solved: false,
-  //     beingSolved: false,
-  //   },
-  //   {
-  //     name: "card4",
-  //     id: 4,
-  //     icon: 2,
-  //     visible: false,
-  //     solved: false,
-  //     beingSolved: false,
-  //   },
-  // ]);
-  const [game, setGame] = useState(true);
-  const [flippedCards, setFlippedCards] = useState(0);
-  const [tries, setTries] = useState(10);
-  const [wonOrLost, setWonOrLost] = useState("");
-  const [playButtonText, setPlayButtonText] = useState("Play");
-  const [startAgain, setStartAgain] = useState(false);
-
+  // Function for shuffling the cards
   function shuffleGivenArray(array) {
     const newArray = [...array]; // Create a new array to avoid modifying the original array
     let currentIndex = newArray.length;
@@ -258,21 +275,12 @@ function Game() {
     return newArray;
   }
 
-  // function startGame() {
-  //   const cardArray = cards;
-  //   const resetCards = cards.map((card) => {
-  //     return { ...card, solved: false, visible: false, beingSolved: false };
-  //   });
-  //   const shuffledCards = shuffleGivenArray(resetCards);
-  //   setCards(shuffledCards);
-  //   setWonOrLost("");
-  //   setPlayButtonText("Restart");
-  //   setTries(3);
-  //   setGame(true);
-  // }
-
+  // This useEffect is run on screen load and when user clicks "Replay"
+  // It resets the game by shuffling the cards and setting other game variables back to default
   useEffect(() => {
+    // game is true on screen load
     if (game) {
+      // Reset all cards and shuffle them
       const cardArray = cards;
       const resetCards = cards.map((card) => {
         return { ...card, solved: false, visible: false, beingSolved: false };
@@ -280,23 +288,14 @@ function Game() {
       const shuffledCards = shuffleGivenArray(resetCards);
       setCards(shuffledCards);
       setWonOrLost("");
-      setPlayButtonText("Restart");
       setTries(10);
-      setGame(true);
       setStartAgain(false);
-      console.log("game started");
     }
   }, [game]);
 
-  // useEffect(() => {
-  //   if (game) {
-  //     const unshuffledCards = cards;
-  //     const shuffledCards = shuffleGivenArray(unshuffledCards);
-  //     setCards(shuffledCards);
-  //   }
-  // }, [game]);
-
+  // This function runs when a user clicks a card and flips it
   function setCardToVisible(card) {
+    // This if only allows card flipping during an active game
     if (game) {
       // This if prevents the code within it from running if user clicks same card twice
       if (card.beingSolved === false && card.solved === false) {
@@ -329,8 +328,7 @@ function Game() {
       );
       const card1 = activeCards[0];
       const card2 = activeCards[1];
-      // console.log("activeCards", activeCards);
-      //   Check if the two visible cards have the same icon and set them to solved if so
+      // Check if the two visible cards have the same icon and set them to solved if so
       if (card1.iconId === card2.iconId) {
         setTimeout(() => {
           setCards((prevCards) =>
@@ -348,6 +346,7 @@ function Game() {
           setTries((prevTries) => prevTries - 1);
           setFlippedCards(0);
         }, 1000);
+        // Flip them back over if not
       } else {
         setTimeout(() => {
           setCards((prev) =>
@@ -363,55 +362,45 @@ function Game() {
         }, 1000);
       }
     }
-
-    // copy card state to a new array
   }, [flippedCards]);
 
-  // when condition is tries >= 1 and you win with one try it says you lost
-
+  // This useEffect handles whether a game has been won or lost
   useEffect(() => {
     const cardsArray = cards;
     const hasSolvedAll = cardsArray.every((obj) => obj.solved === true);
-    // console.log("hasUnsolvedCards", hasUnsolvedCards);
+    // If the user has solved all cards if tries are above 0, they win
     if (hasSolvedAll) {
       setGame(false);
       setWonOrLost("You won!");
-      setPlayButtonText("Play Again");
       setStartAgain(true);
+      setRoundsPlayed((prev) => prev + 1);
+      // Else they lose
     } else {
       if (tries === 0) {
         setGame(false);
         setWonOrLost("You lost!");
-        setPlayButtonText("Play Again");
         setStartAgain(true);
+        setRoundsPlayed((prev) => prev + 1);
       }
     }
   }, [tries]);
-  // console.log("cards", cards);
-  // console.log("flippedCards", flippedCards);
+
   const gameState = {};
   gameState["cards"] = cards;
   gameState["game"] = game;
   gameState["flippedCards"] = flippedCards;
   gameState["tries"] = tries;
   gameState["wonOrLost"] = wonOrLost;
-  gameState["playButtonText"] = playButtonText;
+  gameState["startAgain"] = startAgain;
+  gameState["roundsPlayed"] = roundsPlayed;
+  gameState["localStorage"] = true;
   // localStorage.setItem("gameState", JSON.stringify(gameState));
+  // console.log("hasLocalStorage", hasLocalStorage);
 
-  // not showing => !visible && !solved
-  // showing visible && !solved
-  // solved visible && solved
-
-  // const [shuffle, setShuffle] = useState(false);
-  // const [game, setGame] = useState(false);
-  // const [flippedCards, setFlippedCards] = useState(0);
-  // const [tries, setTries] = useState(2);
-  // const [wonOrLost, setWonOrLost] = useState("");
-  // const [playButtonText, setPlayButtonText] = useState("Play");
   return (
     <Container>
-      <Row className="pt-4">
-        <Col className="ps-3 pe-5">
+      <Row id="hero-row-mobile" className="pt-4">
+        <Col>
           <Row>
             <span id="hero-text-mobile">
               <strong>Buy & sell</strong> premium, pre-loved fashion for little
@@ -419,17 +408,38 @@ function Game() {
             </span>
           </Row>
 
-          <Row>
-            <Col align="end">
-              <img id="bee-mobile" src={Bee}></img>
+          <Row id="bee-legend-row-mobile">
+            <Col id="legend-mobile">
+              <div>Moves left: {tries}</div>
+              <div>Moves taken: {10 - tries}</div>
+              <div>Rounds played: {roundsPlayed}</div>
+            </Col>
+            <Col id="bee-mobile-col">
+              <Row>
+                <Col id="outcome-col-mobile">
+                  <div id="outcome-mobile">{wonOrLost ? wonOrLost : ""}</div>
+                </Col>
+                <Col>
+                  <img id="bee-mobile" src={Bee}></img>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row id="mix-match-replay-row-mobile">
+            <Col align="end" className="mt-2">
+              {startAgain ? (
+                <Button className="replay" onClick={() => setGame(true)}>
+                  Replay
+                </Button>
+              ) : (
+                <span id="mix-and-match-mobile">
+                  Mix & match the tiles<br></br> to reveal a suprise!
+                </span>
+              )}
             </Col>
           </Row>
           <Row>
-            <Col align="center">
-              <span id="mix-and-match-mobile">
-                Mix & match the tiles<br></br> to reveal a suprise!
-              </span>
-            </Col>
+            <Col align="end" className="mt-2"></Col>
           </Row>
         </Col>
       </Row>
@@ -465,13 +475,20 @@ function Game() {
             ))}
           </Row>
         </Col>
-        <Col md={4}>
+        <Col md={4} id="hero-col-desktop">
           <Row>
-            <Col></Col>
+            <Col>
+              <div id="outcome-desktop">{wonOrLost ? wonOrLost + "!" : ""}</div>
+            </Col>
 
-            <Col lg={7} align="end" className="pe-4">
+            <Col
+              lg={7}
+              id="mix-and-match-col-desktop"
+              className="pe-4"
+              align="end"
+            >
               {startAgain ? (
-                <Button id="replay-desktop" onClick={() => setGame(true)}>
+                <Button className="replay" onClick={() => setGame(true)}>
                   Replay
                 </Button>
               ) : (
@@ -482,10 +499,10 @@ function Game() {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <div>Turns left: {tries}</div>
-              <div>Status: {wonOrLost}</div>
-              <div>Game: {game ? "True" : "False"}</div>
+            <Col id="legend-desktop">
+              <div>Moves left: {tries}</div>
+              <div>Moves taken: {10 - tries}</div>
+              <div>Rounds played: {roundsPlayed}</div>
             </Col>
             <Col align="end" className="bee-desktop-col mt-lg-5">
               <img id="bee-desktop" src={Bee}></img>
@@ -509,6 +526,16 @@ function Game() {
               </span>
             </Col>
           </Row>
+        </Col>
+      </Row>
+      <Row id="delivering-soon-row-mobile" className="mt-3">
+        <Col className="pe-5" xs={10}>
+          <span>
+            <strong>
+              Delivering something<br></br> sweet, real soon!
+            </strong>
+            Join the<br></br> hive to stay in the loop!
+          </span>
         </Col>
       </Row>
     </Container>

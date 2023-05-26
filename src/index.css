@@ -1,25 +1,11 @@
-/* * {
-  border: 1px solid black;
-} */
-
 .App {
   background-image: url("./assets/img-bg-desktop.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 110vh;
 }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 /* Cards */
 
@@ -45,11 +31,8 @@ code {
 }
 
 /* Contact form */
-
-.contact-container {
-  background-color: white;
-  border-radius: 15px;
-  padding: 32px 32px 32px 32px !important;
+.contact-container-desktop {
+  display: none;
 }
 
 .bee-informed {
@@ -108,24 +91,57 @@ code {
 
 /* Right col */
 
+#hero-col-desktop {
+  display: none;
+}
+
+#hero-row-mobile {
+  display: none;
+}
+
 #mix-and-match {
   display: none;
 }
 
 #mix-and-match-mobile {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 20px;
+  line-height: 15px;
+}
+
+.replay {
+  background-color: white !important;
+  border: none !important;
+  color: black !important;
+}
+
+#legend-desktop {
   display: none;
 }
 
-#replay-desktop {
-  background-color: white;
-  border: none;
-  color: black;
+#legend-mobile {
+  display: none;
+}
+
+#outcome-col-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+#outcome-mobile {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 20px;
 }
 
 .bee-desktop-col {
   display: flex;
   flex-direction: column;
   align-items: end;
+}
+
+#bee-mobile-col {
+  display: flex;
+  flex-direction: column;
 }
 
 #bee-desktop {
@@ -150,9 +166,46 @@ code {
   font-weight: 500;
 }
 
+/* top row mobile */
+#mix-match-replay-row-mobile {
+  height: 60px;
+}
+
+#delivering-soon-row-mobile {
+  display: none;
+}
+
+/* Form */
+
+.form-row-desktop {
+  display: none;
+}
+
+#form-thank-you {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color:#EFEEEB;
+  border-radius: 5px;
+}
+
+
+
 /* Med to large screens only styles */
 @media (min-width: 991px) {
   /* Hero text */
+  #hero-col-desktop {
+    display: block;
+  }
   #hero-text-large-screen {
     display: block;
     font-size: 40px;
@@ -160,7 +213,24 @@ code {
     font-weight: 500;
   }
 
+  #mix-and-match-col-desktop {
+    height: 40px;
+  }
+
   #mix-and-match {
+    display: block;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 25px;
+  }
+
+  #outcome-desktop {
+    display: block;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 25px;
+    color: purple;
+  }
+
+  #legend-desktop {
     display: block;
     font-family: 'Nanum Pen Script', cursive;
     font-size: 25px;
@@ -171,12 +241,39 @@ code {
   #bee-desktop {
     display: block;
   }
+
+  /* Form */
+
+  .contact-container-desktop {
+    display: block;
+    border-radius: 15px;
+    padding: 32px 32px 32px 32px !important;
+
+    background-color: white;
+  }
+
+  .form-row-desktop {
+    display: block;
+    height: 100px;
+    margin: 32px 32px 32px 32px !important;
+  }
+
+  #signup-button-container-mobile {
+    display: none;
+  }
+
+  #contact-container-mobile {
+    display: none;
+  }
 }
 /* Mobile styles */
 
 @media (max-width: 767px) {
 
   /* Hero text */
+  #hero-row-mobile {
+    display: block;
+  }
   #hero-text-mobile {
     display: block;
     font-size: 30px;
@@ -184,15 +281,22 @@ code {
     font-weight: 500;
   }
 
-  #mix-and-match-mobile {
-    font-family: 'Nanum Pen Script', cursive;
-    font-size: 20px;
-    line-height: 15px;
-  }
+  
 
   /* Bee */
+  #bee-legend-row-mobile {
+    align-items: center;
+    margin-top: 16px;
+  }
   #bee-mobile {
-    width: 60px;
+    display: block;
+    width: 50px;
+  }
+
+  #legend-mobile {
+    display: block;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 20px;
   }
 
   /* Cards */
@@ -200,11 +304,43 @@ code {
     width: 70px;
   }
 
+  .card-turned {
+    width: 70px;
+  }
+
+  .card-complete {
+    width: 70px;
+  }
+
   #card-row {
     padding-top: 15px !important;
   }
-  
 
+  #delivering-soon-row-mobile {
+    display: block;
+  }
+
+  /* Form */
+
+  #contact-container-mobile {
+    background-color: white;
+  }
+
+  #form-close-col {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+  
+  .form-row-mobile {
+    height: 400px;
+    padding: 16px 16px 16px 16px;
+    margin: 0px !important;
+  }
+
+  #signup-button-container-mobile {
+    display: block;
+  }
 
 }
 
